@@ -23,7 +23,7 @@ class PoliController extends Controller
     {
        $requestData = $request->validate([
 
-            'nama' => 'required',
+              'nama' => 'required|unique:poli,nama',
             'biaya' => 'required|numeric',
             'keterangan' => 'nullable'
         ]);
@@ -49,11 +49,11 @@ class PoliController extends Controller
 
     public function update(Request $request, Poli $poli)
     {
-        $request->validate([
-            'nama' => 'required',
-            'biaya' => 'required|numeric',
-            'keterangan' => 'nullable'
-        ]);
+      $request->validate([
+        'nama' => 'required|unique:poli,nama',
+        'biaya' => 'required|numeric|min:0',
+        'keterangan' => 'nullable|string',
+    ]);
 
         $poli->update($request->all());
 
