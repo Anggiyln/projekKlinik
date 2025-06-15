@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Pasien extends Model
 {
     use HasFactory;
+    protected $guarded = [];
 
     /**
      * Relasi Pasien memiliki banyak data pendaftaran.

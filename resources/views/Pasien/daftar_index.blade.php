@@ -6,7 +6,7 @@
 <div class="card">
     <h3 class="card-header">Data Pendaftaran</h3>
     <div class="card-body">
-        <a href="/daftar/create" class="btn btn-primary mb-3">Tambah Data</a>
+        <a href="{{ route('daftar.create') }}" class="btn btn-primary mb-3">Tambah Data</a>
 
         <table class="table table-striped">
             <thead>
@@ -24,14 +24,14 @@
                 @foreach ($daftar as $item)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $item->pasien->nama ?? '-' }}</td>
-                        <td>{{ $item->pasien->jenis_kelamin ?? '-' }}</td>
-                        <td>{{ $item->created_at->format('d-m-Y H:i') }}</td>
+                        <td>{{ $item->pasien->nama }}</td>
+                        <td>{{ $item->pasien->jenis_kelamin }}</td>
+                        <td>{{ $item->tanggal_daftar }}</td>
                         <td>{{ $item->poli }}</td>
                         <td>{{ $item->keluhan }}</td>
                         <td>
-                            <a href="/pasien/{{ $item->id }}/edit" class="btn btn-sm btn-warning d-inline">Edit</a>
-                            <form action="/pasien/{{ $item->id }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
+                            <a href="{{ route('daftar.edit', $item->id) }}" class="btn btn-sm btn-warning d-inline">Edit</a>
+                            <form action="{{ route('daftar.destroy', $item->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-sm btn-danger">Hapus</button>

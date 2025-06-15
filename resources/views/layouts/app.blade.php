@@ -65,8 +65,7 @@
                                 </li>
                                 <li>
                                     <a class="dropdown-item" href="/pasien/create"
-                                        >Tambah Data</a
-                                    >
+                                        >Tambah Data</a>
                                 </li>
                             </ul>
                         </li>

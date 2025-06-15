@@ -13,8 +13,11 @@ class PasienController extends Controller
         return view('pasien.index', $data);
     }
 
-    public function create()
+    public function create(Request $request)
     {
+         if ($request->has('redirect')) {
+        session(['redirect_after_pasien_create' => $request->redirect]);
+    }
         return view('pasien.create');
     }
 
@@ -33,7 +36,13 @@ class PasienController extends Controller
         $pasien->save();
 
         flash('Data berhasil disimpan')->success();
-        return redirect()->route('pasien.index');
+
+          if (session('redirect_after_pasien_create') === 'daftar') {
+        session()->forget('redirect_after_pasien_create'); // bersihkan session
+        return redirect()->route('daftar.create');
+    }
+
+        return back();
     }
 
    public function edit(string $id)
@@ -58,7 +67,7 @@ class PasienController extends Controller
         $pasien->save();
 
         flash('Data berhasil diperbarui')->success();
-        return redirect()->route('pasien.index');
+        return back();
     }
 
     public function destroy(string $id)

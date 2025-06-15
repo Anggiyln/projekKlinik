@@ -17,16 +17,31 @@
 
             <div class="form-group mt-3">
                 <label for="pasien_id">Nama Pasien</label>
-                <select name="pasien_id" class="form-control">
+                | <a href="{{ route('pasien.create', ['redirect' => 'daftar']) }}" target="_blank">Pasien Baru</a>
+                <select name="pasien_id" class="form-control select2">
                     <option value="">-- Pilih Pasien --</option>
                     @foreach ($listPasien as $item)
-                        <option value="{{ $item->id }}" @selected(old('pasien_id') == $item->id)>{{ $item->no_pasien }} - {{ $item->nama }}</option>
+                        <option value="{{ $item->id }}" @selected(old('pasien_id') == $item->id)>
+                            {{ $item->no_pasien }} - {{ $item->nama }}
+                        </option>
                     @endforeach
                 </select>
                 <span class="text-danger">{{ $errors->first('pasien_id') }}</span>
+                {{-- <div>
+                    Setelah menambahkan data pasien baru tekan F5
+                </div> --}}
             </div>
 
-            <!-- Tambahkan input lainnya di sini jika ada -->
+            <div class="form-group mt-3">
+                <label for="poli">Poli</label>
+                <select name="poli" class="form-control">
+                    <option value="">-- Pilih Poli --</option>
+                    @foreach ($listPoli as $key => $val)
+                        <option value="{{ $key }}" @selected(old('poli') == $key)> {{ $val }}</option>
+                    @endforeach
+                </select>
+                <span class="text-danger">{{ $errors->first('poli') }}</span>
+            </div>
 
             <button type="submit" class="btn btn-primary mt-3">Daftar</button>
         </form>
