@@ -50,9 +50,10 @@ class DaftarController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Daftar $daftar)
+    public function show($id)
     {
-        //
+        $data['daftar'] = Daftar::findOrFail($id);
+return view('daftar.show', $data);
     }
 
     /**

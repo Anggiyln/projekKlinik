@@ -22,4 +22,9 @@ class Daftar extends Model
     {
         return $this->belongsTo(Pasien::class)->withDefault();
     }
+
+    public function poli()
+{
+    return $this->belongsTo(Poli::class);
+}
 }

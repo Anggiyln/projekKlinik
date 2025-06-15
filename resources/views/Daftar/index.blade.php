@@ -27,11 +27,12 @@
                         <td>{{ $item->pasien->nama }}</td>
                         <td>{{ $item->pasien->jenis_kelamin }}</td>
                         <td>{{ $item->tanggal_daftar }}</td>
-                        <td>{{ $item->poli }}</td>
+<td> : {{ $daftar->poli->nama ?? '-' }}</td>
                         <td>{{ $item->keluhan }}</td>
                         <td>
                             <div class="btn-group" role="group">
-                                <a href="{{ route('daftar.edit', $item->id) }}" class="btn btn-sm btn-info">Detail</a>
+                                 <a href="/daftar/{{ $item->id }}" class="btn btn-info btn-sm">Detail</a>
+                                {{-- <a href="{{ route('daftar.show', $item->id) }}" class="btn btn-sm btn-info">Detail</a> --}}
                                 <form action="{{ route('daftar.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
     @csrf
     @method('DELETE')
