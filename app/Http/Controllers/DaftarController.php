@@ -14,13 +14,19 @@ class DaftarController extends Controller
      */
     public function index()
     {
-         $data['daftar'] = \App\Models\Daftar::latest()->paginate(10);
+        if (request()->filled('q')){
+            $data['daftar'] = \App\Models\Daftar::search(request('q'))->paginate(10);
+        } else {
+            $data['daftar'] = \App\Models\Daftar::latest()->paginate(10);
+        }
+        $data['daftar'] = \App\Models\Daftar::with('pasien', 'poli')->latest()->paginate(10);
         return view('daftar.index', $data);
     }
 
     /**
      * Show the form for creating a new resource.
      */
+
     public function create()
     {
         $data['listPasien'] =\App\Models\Pasien::orderBy('nama', 'asc')->get();
@@ -67,9 +73,18 @@ return view('daftar.show', $data);
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateDaftarRequest $request, Daftar $daftar)
+    public function update(Request $request,  $id)
     {
-        //
+        $requestData = $request->validate([
+            'diagnosis' => 'required',
+            'tindakan' => 'required',
+
+        ]);
+        $daftar = Daftar::findOrFail($id);
+        $daftar->fill($requestData);
+        $daftar->save();
+        flash('Data berhasil diupdate')->success();
+        return back();
     }
 
     /**

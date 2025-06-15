@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>@yield('title', 'Modernize Free')</title>
+    <title>@yield('title', '
+     Free')</title>
     <link rel="stylesheet" href="{{ asset('assets/css/styles.min.css') }}" />
     <link rel="shortcut icon" href="{{ asset('assets/images/logos/favicon.png') }}" />
   </head>
@@ -61,6 +62,15 @@
                   <span class="hide-menu">Pendaftaran Pasien</span>
                 </a>
               </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link {{ request()->is('laporan-daftar') ? 'active' : '' }}"
+                        href="/laporan-pasien/create" aria-expanded="false">
+                        <span>
+                            <i class="ti ti-user"></i>
+                        </span>
+                        <span class="hide-menu">Laporan Data Pendaftaran</span>
+                    </a>
+                    </li>
             </ul>
           </nav>
         </div>

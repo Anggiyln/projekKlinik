@@ -6,6 +6,17 @@
 <div class="card">
     <h3 class="card-header">Data Pendaftaran</h3>
     <div class="card-body">
+        <form action="">
+        <div class="row g-3 mb-2">
+            <div class="col">
+                <input type="text" name="q" class="form-control" placeholder="Nama atau No. Pasien" value="{{request('q') }}" >
+            </div>
+            <div class="col">
+                <button type="submit" class="btn btn-primary">Cari</button>
+            </div>
+        </div>
+    </form>
+
         <a href="{{ route('daftar.create') }}" class="btn btn-primary mb-3">Tambah Data</a>
 
         <table class="table table-striped">
@@ -27,8 +38,7 @@
                         <td>{{ $item->pasien->nama }}</td>
                         <td>{{ $item->pasien->jenis_kelamin }}</td>
                         <td>{{ $item->tanggal_daftar }}</td>
-<td> : {{ $daftar->poli->nama ?? '-' }}</td>
-                        <td>{{ $item->keluhan }}</td>
+                        <td>{{ $item->poli->nama ?? '-' }}</td>                        <td>{{ $item->keluhan }}</td>
                         <td>
                             <div class="btn-group" role="group">
                                  <a href="/daftar/{{ $item->id }}" class="btn btn-info btn-sm">Detail</a>
