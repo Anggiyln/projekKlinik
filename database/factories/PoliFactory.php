@@ -1,35 +1,23 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Support\Facades\Schema;
+namespace Database\Factories;
 
-return new class extends Migration
+use Illuminate\Database\Eloquent\Factories\Factory;
+
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Poli>
+ */
+class PoliFactory extends Factory
 {
     /**
-     * Run the migrations.
+     * Define the model's default state.
      *
-     * @return void
+     * @return array<string, mixed>
      */
-    public function up()
+    public function definition(): array
     {
-        Schema::create('polis', function (Blueprint $table) {
-            $table->bigIncrements('id');
-            $table->unsignedBigInteger('dokter_id')->index();
-            $table->string('nama');
-            $table->double('biaya');
-            $table->text('deskripsi');
-            $table->timestamps();
-        });
+        return [
+            //
+        ];
     }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('polis');
-    }
-};
+}
