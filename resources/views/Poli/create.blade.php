@@ -9,18 +9,10 @@
             @csrf
 
             <div class="form-group mt-1 mb-3">
-    <label for="nama">Nama Poli</label>
-    <select id="nama" class="form-control @error('nama') is-invalid @enderror" name="nama">
-        <option value="">-- Pilih Poli --</option>
-        <option value="Poli Umum" {{ old('nama') == 'Poli Umum' ? 'selected' : '' }}>Poli Umum</option>
-        <option value="Poli Gigi" {{ old('nama') == 'Poli Gigi' ? 'selected' : '' }}>Poli Gigi</option>
-        <option value="Poli Anak" {{ old('nama') == 'Poli Anak' ? 'selected' : '' }}>Poli Anak</option>
-        <option value="Poli Kandungan" {{ old('nama') == 'Poli Kandungan' ? 'selected' : '' }}>Poli Kandungan</option>
-        <option value="Poli Saraf" {{ old('nama') == 'Poli Saraf' ? 'selected' : '' }}>Poli Saraf</option>
-    </select>
-    <span class="text-danger">{{ $errors->first('nama') }}</span>
-</div>
-
+                <label for="nama">Nama Poli</label>
+                <input id="nama" class="form-control @error('nama') is-invalid @enderror" type="text" name="nama" value="{{ old('nama') }}">
+                <span class="text-danger">{{ $errors->first('nama') }}</span>
+            </div>
 
             <div class="form-group mt-1 mb-3">
                 <label for="biaya">Biaya</label>
