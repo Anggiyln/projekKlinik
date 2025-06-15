@@ -15,7 +15,7 @@ Route::middleware(Authenticate::class)->group(function () {
 
 });
 
-Route::resource('pasien', PasienController::class);
+// Route::resource('pasien', PasienController::class);
 
 
 // Route::resource('pasien', PasienController::class)->except(['show']);

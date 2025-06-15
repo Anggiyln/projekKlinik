@@ -31,12 +31,13 @@
                         <td>{{ $item->keluhan }}</td>
                         <td>
                             <div class="btn-group" role="group">
-                                <a href="{{ route('daftar.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                                <a href="{{ route('daftar.edit', $item->id) }}" class="btn btn-sm btn-info">Detail</a>
                                 <form action="{{ route('daftar.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
-                                </form>
+    @csrf
+    @method('DELETE')
+    <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+</form>
+
                             </div>
                         </td>
                     </tr>

@@ -15,7 +15,7 @@ class DaftarController extends Controller
     public function index()
     {
          $data['daftar'] = \App\Models\Daftar::latest()->paginate(10);
-        return view('pasien.daftar_index', $data);
+        return view('daftar.index', $data);
     }
 
     /**
@@ -74,8 +74,12 @@ class DaftarController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Daftar $daftar)
-    {
-        //
-    }
+ public function destroy($id)
+{
+    $daftar = Daftar::findOrFail($id);
+    $daftar->delete();
+    flash('Data Berhasil Dihapus')->success();
+    return back();
+}
+
 }

@@ -42,7 +42,7 @@
                   <span class="hide-menu">Data Poli</span>
                 </a>
               </li>
-            
+
               <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('poli.create') }}" aria-expanded="false">
                   <span><i class="ti ti-user"></i></span>
