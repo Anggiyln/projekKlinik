@@ -2,96 +2,68 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Poli;
 use Illuminate\Http\Request;
 
 class PoliController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        $data['poli'] = \App\Models\Poli::latest()->paginate(10);
-        $data['judul'] = 'Data-data Poli';
-        return view('poli.index', $data);
-    }
+    $polis = Poli::orderBy('created_at', 'desc')->paginate(10);
+    return view('Poli.index', compact('polis'));
+}
 
-    /**
-     * Show the form for creating a new resource.
-     */
+
     public function create()
     {
-        $data['poli'] = new \App\Models\Poli();
-        $data['judul'] = 'Tambah Data';
-        $data['list_dokter'] = \App\Models\Dokter::get();
-        return view('poli.create', $data);
+        return view('Poli.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        $validasiData = $request->validate([
-            'nama' => 'required|unique:polis',
-            'dokter_id' => 'required',
-            'biaya' => 'required|numeric',
-            'deskripsi' => 'required'
-        ]);
-        $poli = new \App\Models\Poli();
-        $poli->fill($validasiData);
-        $poli->save();
+       $requestData = $request->validate([
 
-        flash('Data berhasil disimpan');
+            'nama' => 'required',
+            'biaya' => 'required|numeric',
+            'keterangan' => 'nullable'
+        ]);
+
+       $polis = new \App\Models\Poli;
+        $polis->fill($requestData);
+        $polis->save();
+
+        flash('Data Poli berhasil disimpan')->success();
+
+          if (session('redirect_after_poli_create') === 'daftar') {
+        session()->forget('redirect_after_poli_create'); // bersihkan session
+        return redirect()->route('poli.create');
+    }
+
         return back();
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function edit(Poli $poli)
     {
-        //
+        return view('poli.edit', compact('poli'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function update(Request $request, Poli $poli)
     {
-        $data['poli'] = \App\Models\Poli::findOrFail($id);
-        $data['judul'] = 'Ubah Data';
-        $data['list.dokter'] = \App\Models\Dokter::get();
-        return view('poli.edit', $data);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        $validasiData = $request->validate([
-            'nama' => 'required|unique:polis,nama,' . $id . ',id',
-            'dokter_id' => 'required',
+        $request->validate([
+            'nama' => 'required',
             'biaya' => 'required|numeric',
-            'deskripsi' => 'required'
+            'keterangan' => 'nullable'
         ]);
-        $dokter = \App\Models\Poli::findOrFail($id);
-        $dokter->fill($validasiData);
-        $dokter->save();
 
-        flash('Data berhasil diubah');
-        return redirect('poli');
+        $poli->update($request->all());
+
+        return redirect('/poli')->with('success', 'Data Poli berhasil diperbarui!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
+    public function destroy(Poli $poli)
     {
-        $dokter = \App\Models\Poli::findOrFail($id);
-        $dokter->delete();
-        flash('Data berhasil dihapus');
-        return back();
+        $poli->delete();
+
+        return redirect('/poli')->with('success', 'Data Poli berhasil dihapus!');
     }
 }

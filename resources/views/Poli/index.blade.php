@@ -1,43 +1,45 @@
 @extends('layouts.app_modern')
+@section('title','Data Poli')
+
 @section('content')
-    <div class="card">
-        <div class="card-header"> {{ $judul }} </div>
-        <div class="card-body">
-            <a href="/poli/create" class="btn btn-primary mb-3">Tambah Data</a>
-            <table class="table table-bordered table-hover">
-                <thead>
+<div class="card">
+    <h3 class="card-header">Data Poli</h3>
+    <div class="card-body">
+        <a href="/poli/create" class="btn btn-primary mb-3">Tambah Poli</a>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>NO</th>
+                    <th>Nama</th>
+                    <th>Biaya</th>
+                    <th>Keterangan</th>
+                    <th>Aksi</th> 
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($polis as $poli)
                     <tr>
-                        <th width="1%">ID</th>
-                        <th>Nama Poli</th>
-                        <th width="15%">Biaya</th>
-                        <th width="16%">Aksi</th>
+                        <td>{{ $loop->iteration }}</td>
+                        <td>{{ $poli->nama }}</td>
+                        <td>{{ number_format($poli->biaya) }}</td>
+                        <td>{{ $poli->keterangan }}</td>
+                        <td>
+                            <a href="/poli/{{ $poli->id }}/edit" class="btn btn-sm btn-warning">Edit</a>
+                            <form action="/poli/{{ $poli->id }}" method="POST" style="display:inline-block;" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                            </form>
+                        </td>
                     </tr>
-                </thead>
-                <tbody>
-                    @foreach ($poli as $item)
-                        <tr>
-                            <td>{{ $item->id }}</td>
-                            <td>
-                                <div>Nama Poli: <b>{{ $item->nama }}</b></div>
-                                <div>Nama Dokter: <b>{{ $item->dokter->nama_dokter }}</b></div>
-                                <div>Deskripsi: {{ $item->deskripsi }}</div>
-                            </td>
-                            <td>Rp. {{ number_format($item->biaya, 0, ',', '.') }}</td>
-                            <td>
-                                <a href="/poli/{{ $item->id }}/edit" class="btn btn-primary">
-                                    Edit
-                                </a>
-                                <form action="/poli/{{ $item->id }}" method="POST" class="d-inline">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger"
-                                        onclick="return confirm('Apakah anda yakin?')">Hapus</button>
-                                </form>
-                            </td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                @endforeach
+            </tbody>
+        </table>
+
+        {{-- PAGINATION --}}
+        <div class="d-flex justify-content-center">
+            {{ $polis->links() }}
         </div>
     </div>
+</div>
 @endsection

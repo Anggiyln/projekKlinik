@@ -30,12 +30,14 @@
                         <td>{{ $item->poli }}</td>
                         <td>{{ $item->keluhan }}</td>
                         <td>
-                            <a href="{{ route('daftar.edit', $item->id) }}" class="btn btn-sm btn-warning d-inline">Edit</a>
-                            <form action="{{ route('daftar.destroy', $item->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
-                            </form>
+                            <div class="btn-group" role="group">
+                                <a href="{{ route('daftar.edit', $item->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                                <form action="{{ route('daftar.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                                </form>
+                            </div>
                         </td>
                     </tr>
                 @endforeach
