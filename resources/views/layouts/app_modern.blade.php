@@ -67,7 +67,7 @@
               <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('daftar.index') }}" aria-expanded="false">
                   <span><i class="ti ti-clipboard"></i></span>
-                  <span class="hide-menu">Pendaftaran Pasien</span>
+                  <span class="hide-menu">Data Pendaftaran Pasien</span>
                 </a>
               </li>
                 {{-- <li class="sidebar-item">

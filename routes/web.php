@@ -6,7 +6,7 @@ use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PoliController;
 use \App\Http\Controllers\PasienController;
-use \App\Http\Controllers\LaporanPasienController;
+// use \App\Http\Controllers\LaporanPasienController;
 use App\Http\Controllers\TipsController;
 
 
