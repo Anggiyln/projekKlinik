@@ -7,15 +7,15 @@
     <h3 class="card-header">Data Pendaftaran</h3>
     <div class="card-body">
         <form action="">
-        <div class="row g-3 mb-2">
-            <div class="col">
-                <input type="text" name="q" class="form-control" placeholder="Nama atau No. Pasien" value="{{request('q') }}" >
+            <div class="row g-3 mb-2">
+                <div class="col">
+                    <input type="text" name="q" class="form-control" placeholder="Nama atau No. Pasien" value="{{ request('q') }}">
+                </div>
+                <div class="col">
+                    <button type="submit" class="btn btn-primary">Cari</button>
+                </div>
             </div>
-            <div class="col">
-                <button type="submit" class="btn btn-primary">Cari</button>
-            </div>
-        </div>
-    </form>
+        </form>
 
         <a href="{{ route('daftar.create') }}" class="btn btn-primary mb-3">Tambah Data</a>
 
@@ -27,6 +27,7 @@
                     <th>JENIS KELAMIN</th>
                     <th>TANGGAL DAFTAR</th>
                     <th>POLI</th>
+                    <th>BIAYA</th>
                     <th>KELUHAN</th>
                     <th>AKSI</th>
                 </tr>
@@ -38,22 +39,17 @@
                         <td>{{ $item->pasien->nama }}</td>
                         <td>{{ $item->pasien->jenis_kelamin }}</td>
                         <td>{{ $item->tanggal_daftar }}</td>
-                        <td>
                         <td>{{ $item->poli->nama ?? '-' }}</td>
                         <td>{{ $item->biaya }}</td>
-                        </td>
-                        <td>{{ $item->poli->nama ?? '-' }}</td>
                         <td>{{ $item->keluhan }}</td>
                         <td>
                             <div class="btn-group" role="group">
-                                 <a href="/daftar/{{ $item->id }}" class="btn btn-info btn-sm">Detail</a>
-                                {{-- <a href="{{ route('daftar.show', $item->id) }}" class="btn btn-sm btn-info">Detail</a> --}}
+                                <a href="/daftar/{{ $item->id }}" class="btn btn-info btn-sm">Detail</a>
                                 <form action="{{ route('daftar.destroy', $item->id) }}" method="POST" onsubmit="return confirm('Yakin ingin menghapus data ini?')">
-    @csrf
-    @method('DELETE')
-    <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
-</form>
-
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-sm btn-danger">Hapus</button>
+                                </form>
                             </div>
                         </td>
                     </tr>
