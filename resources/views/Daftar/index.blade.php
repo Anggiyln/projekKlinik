@@ -38,7 +38,12 @@
                         <td>{{ $item->pasien->nama }}</td>
                         <td>{{ $item->pasien->jenis_kelamin }}</td>
                         <td>{{ $item->tanggal_daftar }}</td>
-                        <td>{{ $item->poli->nama ?? '-' }}</td>                        <td>{{ $item->keluhan }}</td>
+                        <td>
+                        <td>{{ $item->poli->nama ?? '-' }}</td>
+                        <td>{{ $item->biaya }}</td>
+                        </td>
+                        <td>{{ $item->poli->nama ?? '-' }}</td>
+                        <td>{{ $item->keluhan }}</td>
                         <td>
                             <div class="btn-group" role="group">
                                  <a href="/daftar/{{ $item->id }}" class="btn btn-info btn-sm">Detail</a>

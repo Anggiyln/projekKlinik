@@ -69,7 +69,7 @@
                   <span class="hide-menu">Pendaftaran Pasien</span>
                 </a>
               </li>
-                <li class="sidebar-item">
+                {{-- <li class="sidebar-item">
                     <a class="sidebar-link {{ request()->is('laporan-daftar') ? 'active' : '' }}"
                         href="/laporan-pasien/create" aria-expanded="false">
                         <span>
@@ -77,7 +77,7 @@
                         </span>
                         <span class="hide-menu">Laporan Data Pendaftaran</span>
                     </a>
-                    </li>
+                    </li> --}}
             </ul>
           </nav>
         </div>

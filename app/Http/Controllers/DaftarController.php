@@ -28,7 +28,7 @@ class DaftarController extends Controller
 
     public function create()
     {
-        $data['listPasien'] =\App\Modes\Pasien::orderBy('nama', 'asc')->get();
+        $data['listPasien'] =\App\Models\Pasien::orderBy('nama', 'asc')->get();
         $data['listPoli'] = \App\Models\Poli::orderBy('nama', 'asc')->get();
 
         return view('daftar.create', $data);
@@ -45,6 +45,7 @@ class DaftarController extends Controller
             'poli_id'=> 'required',
             'keluhan'=> 'required',
         ]);
+
         $daftar = new Daftar();
         $daftar->fill($requestData);
         $daftar->save();

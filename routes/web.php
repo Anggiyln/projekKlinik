@@ -11,7 +11,7 @@ use \App\Http\Controllers\LaporanPasienController;
 
 
 Route::middleware(Authenticate::class)->group(function () {
-    Route::resource('laporan-pasien', LaporanPasienController::class);
+    // Route::resource('laporan-pasien', LaporanPasienController::class);
     Route::resource('pasien', PasienController::class);
         Route::resource('daftar', DaftarController::class);
         Route::resource('poli', PoliController::class);
