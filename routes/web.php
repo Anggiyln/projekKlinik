@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\PoliController;
 use \App\Http\Controllers\PasienController;
 use \App\Http\Controllers\LaporanPasienController;
+use App\Http\Controllers\TipsController;
 
 
 
@@ -15,6 +16,7 @@ Route::middleware(Authenticate::class)->group(function () {
     Route::resource('pasien', PasienController::class);
         Route::resource('daftar', DaftarController::class);
         Route::resource('poli', PoliController::class);
+        Route::get('tips', [TipsController::class, 'index']);
 
 
 });
