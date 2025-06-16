@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>@yield('title', 'Free')</title>
+    <title>@yield('title', 'Medical')</title>
     <link rel="stylesheet" href="{{ asset('assets/css/styles.min.css') }}" />
     <link rel="shortcut icon" href="{{ asset('assets/images/logos/favicon.png') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}" />
@@ -29,12 +29,12 @@
             <ul id="sidebarnav">
               <li class="nav-small-cap">
                 <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                <span class="hide-menu">Home</span>
+                <span class="hide-menu">Dashboard</span>
               </li>
               <li class="sidebar-item">
                 <a class="sidebar-link" href="/home" aria-expanded="false">
                   <span><i class="ti ti-layout-dashboard"></i></span>
-                  <span class="hide-menu">Dashboard</span>
+                  <span class="hide-menu">Home</span>
                 </a>
               </li>
                 <li class="sidebar-item">
