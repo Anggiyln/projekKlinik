@@ -1,0 +1,20 @@
+/* header */
+.app-header {
+  background: linear-gradient(90deg, #d8fff9, #f1d6ff);
+  box-shadow: 0 2px 2px #0003;
+}
+
+
+
+/* sidebar */
+.left-sidebar {
+  background: linear-gradient(
+    to top,
+    #c8a1ff 0%,
+    #75fff4 20%,
+    #ffffff 90%
+  );
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow: 4px 0 6px #0003;
+}

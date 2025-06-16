@@ -6,6 +6,7 @@
     <title>@yield('title', 'Free')</title>
     <link rel="stylesheet" href="{{ asset('assets/css/styles.min.css') }}" />
     <link rel="shortcut icon" href="{{ asset('assets/images/logos/favicon.png') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}" />
   </head>
 
   <body>
@@ -38,20 +39,20 @@
               </li>
                 <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('poli.index') }}" aria-expanded="false">
-                  <span><i class="ti ti-user"></i></span>
+                  <span><i class="ti ti-building-hospital"></i></span>
                   <span class="hide-menu">Data Poli</span>
                 </a>
               </li>
 
               <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('poli.create') }}" aria-expanded="false">
-                  <span><i class="ti ti-user"></i></span>
+                  <span><i class="ti ti-plus"></i></span>
                   <span class="hide-menu">Tambah Poli</span>
                 </a>
               </li>
               <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('pasien.create') }}" aria-expanded="false">
-                  <span><i class="ti ti-user"></i></span>
+                  <span><i class="ti ti-user-plus"></i></span>
                   <span class="hide-menu">Tambah Pasien</span>
                 </a>
               </li>
@@ -65,7 +66,7 @@
 
               <li class="sidebar-item">
                 <a class="sidebar-link" href="{{ route('daftar.index') }}" aria-expanded="false">
-                  <span><i class="ti ti-user"></i></span>
+                  <span><i class="ti ti-clipboard"></i></span>
                   <span class="hide-menu">Pendaftaran Pasien</span>
                 </a>
               </li>
